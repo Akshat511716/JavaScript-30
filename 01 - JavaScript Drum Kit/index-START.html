@@ -60,15 +60,15 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown', playSound)
+    function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
       if (!audio) return; //Stop the function
       audio.currentTime = 0; //rewind to start to play the audio over and over again! 
       audio.play();
       key.classList.add('playing');
-
-    })
+    }
 
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
